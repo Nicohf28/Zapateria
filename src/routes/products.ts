@@ -1,24 +1,20 @@
+
+// src/routes/products.ts
 import { Router } from "express";
-import type { Product } from "../types/index.d.js";
+import { getProducts } from "../data/data.ts";
 
 const router = Router();
 
-// In-memory catalog
-const products: Product[] = [
-  { id: 1, name: "Runner Azul", price: 199999, image: "/img/shoe_1.png", description: "Zapatilla ligera para correr, malla transpirable.", stock: 12 },
-  { id: 2, name: "Classic Rojo", price: 149999, image: "/img/shoe_2.png", description: "Clásico urbano para uso diario.", stock: 24 },
-  { id: 3, name: "Eco Verde", price: 179999, image: "/img/shoe_3.png", description: "Materiales reciclados, cómodo y resistente.", stock: 8 },
-  { id: 4, name: "Urban Naranja", price: 159999, image: "/img/shoe_4.png", description: "Estilo urbano con suela de alta tracción.", stock: 16 },
-  { id: 5, name: "Sport Morado", price: 189999, image: "/img/shoe_5.png", description: "Para entrenamientos de alto rendimiento.", stock: 10 },
-  { id: 6, name: "Trail Gris", price: 209999, image: "/img/shoe_6.png", description: "Ideal para montaña y terrenos irregulares.", stock: 7 },
-];
-
-router.get("/", (_req, res) => {
+// Obtener todos los productos
+router.get("/", async (_req, res) => {
+  const products = await getProducts();
   res.json(products);
 });
 
-router.get("/:id", (req, res) => {
+// Obtener producto por ID
+router.get("/:id", async (req, res) => {
   const id = Number(req.params.id);
+  const products = await getProducts();
   const product = products.find(p => p.id === id);
   if (!product) return res.status(404).json({ error: "Producto no encontrado" });
   res.json(product);
