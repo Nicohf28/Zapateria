@@ -31,50 +31,40 @@
     <h1 class="mb-4 fw-semibold text-primary">Carrito</h1>
 
     <div class="cart-container">
-      <table class="table table-borderless align-middle">
+      <table class="table table-borderless align-middle cart-table">
+        <colgroup>
+          <col class="col-product">
+          <col class="col-qty">
+          <col class="col-price">
+          <col class="col-actions">
+        </colgroup>
         <thead>
           <tr class="text-muted">
             <th>Producto</th>
             <th class="text-center">Cantidad</th>
-            <th class="text-center">Subtotal</th>
-            <th></th>
+            <th class="text-center">Precio</th>
+            <th class="text-center">Acciones</th>
           </tr>
         </thead>
         <tbody id="cart-body">
-          <!-- Ejemplo de fila -->
-          <tr>
-            <td class="product-name">Zapato Azul</td>
-            <td class="quantity text-center">2</td>
-            <td class="subtotal text-center">$120.000</td>
-            <td class="text-center">
-              <button class="btn btn-outline-danger btn-sm">Eliminar</button>
-            </td>
-          </tr>
-          <tr>
-            <td class="product-name">Tenis Blanco</td>
-            <td class="quantity text-center">1</td>
-            <td class="subtotal text-center">$80.000</td>
-            <td class="text-center">
-              <button class="btn btn-outline-danger btn-sm">Eliminar</button>
-            </td>
-          </tr>
+          <!-- el JS seguirá inyectando las filas -->
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="2" class="text-end fw-semibold">Total</td>
-            <td class="total text-center" id="cart-total">$200.000</td>
-            <td></td>
+            <td colspan="4" class="p-0">
+              <div class="total-row d-flex justify-content-between align-items-center">
+                <span class="label">Total</span>
+                <span id="cart-total">$0</span>
+              </div>
+            </td>
           </tr>
         </tfoot>
       </table>
     </div>
 
-
-
-
     <div class="d-flex gap-2 mt-4">
-      <button id="btn-clear" class="btn btn-outline-danger">Vaciar carrito</button>
-      <a href="/" class="btn btn-primary">Seguir comprando</a>
+      <button id="btn-clear" class="btn btn-outline-danger btn-pill">Vaciar carrito</button>
+      <a href="/" class="btn btn-primary btn-pill">Seguir comprando</a>
     </div>
   </main>
 

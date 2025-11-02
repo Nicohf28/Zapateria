@@ -1,5 +1,3 @@
-
-// src/routes/products.ts
 import { Router } from "express";
 import { getProducts } from "../data/data.ts";
 

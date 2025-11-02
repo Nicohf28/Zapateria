@@ -73,5 +73,22 @@
       "stock": 20
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "productId": 1,
+      "qty": 1
+    },
+    {
+      "productId": 2,
+      "qty": 1
+    },
+    {
+      "productId": 3,
+      "qty": 1
+    },
+    {
+      "productId": 5,
+      "qty": 1
+    }
+  ]
 }
