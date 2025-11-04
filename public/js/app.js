@@ -1,11 +1,9 @@
-
 // public/js/app.js
 
 const fmt = (n) => n.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
 let allProducts = []; // Guardamos todos los productos para filtrar
 
 // --- CONTADOR DE CARRITO ---
-// Actualiza todos los elementos con id="cart-count"
 async function updateCartCount() {
   try {
     const res = await fetch('/api/cart');
@@ -27,7 +25,7 @@ async function loadProducts() {
   try {
     const res = await fetch('/api/products');
     const products = await res.json();
-    allProducts = products; // Guardamos todos los productos
+    allProducts = products;
     renderProducts(products);
   } catch (error) {
     console.error("Error al cargar productos:", error);
@@ -56,19 +54,17 @@ function showCartToast(btn) {
     </div>
   `;
 
-  // Insertar dentro del contenedor del botón
   const parent = btn.closest(".card-body");
   parent.style.position = "relative";
   parent.appendChild(toast);
 
-  // Desaparece después de 1.5s
   setTimeout(() => {
     toast.style.opacity = "0";
     setTimeout(() => toast.remove(), 300);
   }, 1500);
 }
 
-// Renderiza productos en el DOM
+// --- RENDER DE PRODUCTOS ---
 function renderProducts(products) {
   const list = document.getElementById('product-list');
 
@@ -102,7 +98,6 @@ function renderProducts(products) {
     </div>
   `).join('');
 
-  // Agregar eventos a los botones "Agregar"
   list.querySelectorAll('button[data-id]').forEach(btn => {
     btn.addEventListener('click', async () => {
       const productId = Number(btn.dataset.id);
@@ -114,15 +109,11 @@ function renderProducts(products) {
         body: JSON.stringify({ productId, qty })
       });
 
-      // Actualizamos el contador en todas partes
       updateCartCount();
-
-      // ✅ Mostrar Toast local cerca del botón
       showCartToast(btn);
     });
   });
 
-  // Actualizar contador al renderizar productos
   updateCartCount();
 }
 
@@ -148,3 +139,39 @@ filterBtn.addEventListener('click', () => {
 
 // --- CARGA INICIAL ---
 loadProducts();
+
+// --- LOGIN Y MENÚ DE USUARIO ---
+const loginBtn = document.getElementById("login-btn");
+const userMenu = document.getElementById("user-menu");
+const userNameText = document.getElementById("user-name-text");
+const logoutBtn = document.getElementById("logout-btn");
+
+const token = localStorage.getItem("token");
+const userName = localStorage.getItem("username"); // Ej: "Juan Pérez"
+
+if (token) {
+  // Ocultar botón login y mostrar menú
+  if (loginBtn) loginBtn.classList.add("d-none");
+  if (userMenu) userMenu.classList.remove("d-none");
+
+  // ✅ Mostrar el nombre del usuario en el menú
+  if (userNameText) {
+    userNameText.textContent = userName ? `Hola, ${userName}` : "Hola, Usuario";
+  }
+
+  // Cerrar sesión
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("username");
+      location.reload();
+    });
+  }
+} else {
+  // Si no hay sesión, muestra el botón login
+  if (loginBtn) {
+    loginBtn.textContent = "Iniciar sesión";
+    loginBtn.href = "/login.html";
+  }
+  if (userMenu) userMenu.classList.add("d-none");
+}

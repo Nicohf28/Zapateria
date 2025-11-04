@@ -33,6 +33,14 @@ body {
   transform: scale(1.05);
 }
 
+.user-icon {
+  font-size: 1.2rem;
+}
+#user-name-text {
+  font-weight: 600;
+}
+
+
 /* 🖋 Títulos */
 h1, h2, h3 {
   font-weight: 600;

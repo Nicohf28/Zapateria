@@ -75,6 +75,14 @@
     </div>
   </footer>
 
+
+  <script>
+  const token = localStorage.getItem("token");
+  if (!token) {
+    window.location.href = "login.html";
+  }
+</script>
+
   <script src="js/cart.js" type="module"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();

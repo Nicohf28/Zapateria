@@ -1,0 +1,14 @@
+[
+  {
+    "id": "9ecec525-0b6d-470b-aeaa-8a50334ac355",
+    "username": "admin",
+    "password": "$2b$10$/lwTUJZWQPFsQuDy6N5bP.8X7ncSMW8jt3/GPZ7RTZiL8BU3IVxOK",
+    "role": "admin"
+  },
+  {
+    "id": "474aab98-1c54-4df7-8a17-de323f1e377c",
+    "username": "Pepito Perez",
+    "password": "$2b$10$gSjO2rCY0BsHBDBjy66JreBpCd.n9T/SW9M3a0NXrgg5WoCHvwv.q",
+    "role": "user"
+  }
+]

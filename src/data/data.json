@@ -75,19 +75,19 @@
   ],
   "cart": [
     {
-      "productId": 1,
-      "qty": 1
-    },
-    {
-      "productId": 2,
-      "qty": 1
-    },
-    {
-      "productId": 3,
-      "qty": 1
-    },
-    {
       "productId": 5,
+      "qty": 1
+    },
+    {
+      "productId": 4,
+      "qty": 1
+    },
+    {
+      "productId": 7,
+      "qty": 1
+    },
+    {
+      "productId": 8,
       "qty": 1
     }
   ]
