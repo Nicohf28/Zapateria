@@ -77,9 +77,6 @@ Controla las operaciones del carrito de compras, que se guarda en la sesión del
 - **POST `/cart/remove`**  
   Elimina un producto del carrito, según su `id`.
 
-- **POST `/cart/clear`** *(opcional según implementación)*  
-  Vacía el carrito de la sesión actual.
-
 Estas rutas utilizan `cookie-session` para mantener la persistencia entre solicitudes.
 
 ---
